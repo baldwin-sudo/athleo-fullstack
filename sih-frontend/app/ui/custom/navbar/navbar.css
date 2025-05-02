@@ -1,0 +1,25 @@
+.navbar-list > .nav-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar-list > .nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+
+  height: 3px;
+  border-radius: 5rem;
+  width: 0;
+  background-color: var(--color-cyan-300); /* or your brand color */
+  transition: width 0.35s ease;
+}
+
+.navbar-list > .nav-item:hover {
+  color: var(--color-cyan-300);
+}
+
+.navbar-list > .nav-item:hover::after {
+  width: 100%;
+}
