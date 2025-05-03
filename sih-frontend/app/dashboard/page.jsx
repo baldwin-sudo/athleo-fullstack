@@ -1,4 +1,8 @@
+// app/dashboard/page.jsx
+'use client';
+
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import gym from "../assets/dashboard/gym.png";
 import water from "../assets/dashboard/bottle.png";
 import eating from "../assets/dashboard/eating.png";
@@ -6,17 +10,27 @@ import running from "../assets/dashboard/running.png";
 import sleep from "../assets/dashboard/sleep.png";
 
 const Page = ({}) => {
+  const router = useRouter();
+
+  // Fonction pour rediriger vers la page de suivi des pas
+  const navigateToSteps = () => {
+    router.push('/steps');
+  };
+
   return (
-    <div className="flex flex-col items-center  pt-1">
-      <h1 className="font-semibold text-lg text-neutral-300 text-left mb-2   w-full">
-        Hi , mehdi
+    <div className="flex flex-col items-center pt-1">
+      <h1 className="font-semibold text-lg text-neutral-300 text-left mb-2 w-full">
+        Hi, mehdi
       </h1>
       <h1 className="font-semibold text-2xl text-white mb-10 text-center w-full">
         DashBoard
       </h1>
-      <div className=" text-center italic text-lg flex flex-col items-start space-y-5  w-full p-1 rounded-xl">
-        {/* Steps */}
-        <div className=" flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg">
+      <div className="text-center italic text-lg flex flex-col items-start space-y-5 w-full p-1 rounded-xl">
+        {/* Steps - Avec événement onClick pour la navigation */}
+        <div 
+          className="flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg cursor-pointer"
+          onClick={navigateToSteps}
+        >
           <div className="p-4 rounded-full bg-gradient-to-r from-green-200 from-10% via-green-300 via-30% to-green-400 to-100% transition-all duration-200 hover:scale-110 hover:shadow-2xl hover:shadow-green-300">
             <Image className="size-10 lg:size-16" src={running} alt="running" />
           </div>
