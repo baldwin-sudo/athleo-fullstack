@@ -4,11 +4,17 @@ import React, { useState } from "react";
 import brand from "../assets/brand-logo.png";
 import Link from "next/link";
 const fields = [
+  { name: "username", label: "nom d'utilisateur", type: "text" },
+  { name: "password", label: "mot de passe", type: "password" },
   { name: "age", label: "Âge", type: "number" },
   { name: "sexe", label: "Sexe", type: "text" },
   { name: "imc", label: "IMC", type: "number" },
   { name: "pasParJour", label: "Pas/jour", type: "number" },
-  { name: "sportParSemaine", label: "Sport/semaine", type: "number" },
+  {
+    name: "sportParSemaine",
+    label: "combien de fois vous pratiquez du Sport par semaine ?",
+    type: "number",
+  },
   { name: "sommeil", label: "Sommeil (h)", type: "number" },
   { name: "tempsDispoParJour", label: "Temps dispo/jour", type: "number" },
   { name: "objectif", label: "Objectif (encodé)", type: "text" },
