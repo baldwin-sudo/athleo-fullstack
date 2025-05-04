@@ -1,8 +1,8 @@
 import Image from "next/image";
-import profileImg from "../assets/fake-profile/avatar.jpg";
-import gymIcon from "../assets/gymIcon.png";
-import shoesIcon from "../assets/shoesIcon.png";
-import pointsIcon from "../assets/pointsIcon.png";
+import profileImg from "../../../assets/fake-profile/avatar.jpg";
+import gymIcon from "../../../assets/gymIcon.png";
+import shoesIcon from "../../../assets/shoesIcon.png";
+import pointsIcon from "../../../assets/pointsIcon.png";
 export default function Page() {
   const profile = {
     name: "Christina",

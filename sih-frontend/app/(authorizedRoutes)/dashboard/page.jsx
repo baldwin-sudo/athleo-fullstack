@@ -1,20 +1,20 @@
 // app/dashboard/page.jsx
-'use client';
+"use client";
 
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
-import gym from "../assets/dashboard/gym.png";
-import water from "../assets/dashboard/bottle.png";
-import eating from "../assets/dashboard/eating.png";
-import running from "../assets/dashboard/running.png";
-import sleep from "../assets/dashboard/sleep.png";
+import { useRouter } from "next/navigation";
+import gym from "../../assets/dashboard/gym.png";
+import water from "../../assets/dashboard/bottle.png";
+import eating from "../../assets/dashboard/eating.png";
+import running from "../../assets/dashboard/running.png";
+import sleep from "../../assets/dashboard/sleep.png";
 
 const Page = ({}) => {
   const router = useRouter();
 
   // Fonction pour rediriger vers la page de suivi des pas
   const navigateToSteps = () => {
-    router.push('/steps');
+    router.push("/steps");
   };
 
   return (
@@ -27,7 +27,7 @@ const Page = ({}) => {
       </h1>
       <div className="text-center italic text-lg flex flex-col items-start space-y-5 w-full p-1 rounded-xl">
         {/* Steps - Avec événement onClick pour la navigation */}
-        <div 
+        <div
           className="flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg cursor-pointer"
           onClick={navigateToSteps}
         >
