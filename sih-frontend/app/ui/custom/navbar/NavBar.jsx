@@ -76,9 +76,12 @@ export default function NavBar() {
             })}
 
             <li>
-              <button className="bg-cyan-300 text-neutral-950 transition-all duration-100 hover:bg-cyan-100 px-3 py-1.5 rounded-lg">
+              <Link
+                href="/signin"
+                className="bg-cyan-300 text-neutral-950 transition-all duration-100 hover:bg-cyan-100 px-3 py-1.5 rounded-lg"
+              >
                 Sign out
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
