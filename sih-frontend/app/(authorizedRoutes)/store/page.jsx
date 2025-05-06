@@ -112,13 +112,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <div
-      className="bg-white rounded shadow-sm hover:shadow transition-shadow"
+      className="bg-gray-900 rounded-lg shadow-lg hover:shadow-cyan-400/20 transition-all border border-gray-800 hover:border-cyan-400"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative">
         {/* Taille d'image optimisée */}
-        <div className="relative w-full h-56 md:h-48 lg:h-44 xl:h-40">
+        <div className="relative w-full h-56 md:h-48 lg:h-44 xl:h-40 overflow-hidden rounded-t-lg">
           <Image
             src={product.image}
             alt={product.name}
@@ -126,31 +126,38 @@ const ProductCard = ({ product }) => {
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
             className="object-cover"
           />
+
+          {/* Overlay on hover */}
+          <div
+            className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          ></div>
         </div>
 
         {/* Badge (HOT, NEW, OFF) */}
         {product.badge && (
           <div
-            className={`absolute top-1 right-1 text-xs font-bold px-1 py-0.5 ${
+            className={`absolute top-2 right-2 text-xs font-bold px-2 py-1 rounded-full ${
               product.badge.includes("OFF")
-                ? "bg-blue-500"
+                ? "bg-cyan-400"
                 : product.badge === "HOT"
                 ? "bg-red-500"
                 : "bg-yellow-400"
-            } text-white`}
+            } text-black`}
           >
             {product.badge}
           </div>
         )}
       </div>
 
-      <div className="p-2 text-center">
-        <h3 className="font-medium text-gray-800 text-xs sm:text-sm">
-          {product.name}
-        </h3>
-        <p className="text-gray-600 text-xs mt-0.5 mb-2">{product.price}</p>
+      <div className="p-3 text-center">
+        <h3 className="font-medium text-white text-sm">{product.name}</h3>
+        <p className="text-cyan-400 text-xs mt-1 mb-3 font-bold">
+          {product.price}
+        </p>
         {/* Bouton Add to Cart placé sous le prix */}
-        <button className="bg-cyan-500 hover:bg-cyan-600 text-white py-0.5 px-3 text-xs rounded-full transition-colors">
+        <button className="bg-cyan-400 hover:bg-cyan-500 text-black py-1 px-4 text-xs font-bold rounded-full transition-colors">
           Add to Cart
         </button>
       </div>
@@ -160,35 +167,94 @@ const ProductCard = ({ product }) => {
 
 export default function ShopPage() {
   return (
-    <div className="flex flex-col w-full max-w-7xl mx-auto">
-      {/* Header with coins */}
-      <div className="self-end flex items-center justify-center font-bold text-xl rounded-2xl bg-neutral-50 w-fit px-2 py-1">
-        1205 <Image className="w-5 h-5" src={coins} alt="Coins" />
-        <span className="flex items-center justify-center bg-green-500 rounded-full text-white h-5 w-5 ml-1 text-xs">
-          +
-        </span>
-      </div>
-
-      {/* Store title */}
-      <h1 className="text-center text-xl text-cyan-500 font-semibold mb-4">
-        Store
-      </h1>
-
-      {/* Products grid */}
-      <div className="bg-gray-50 rounded-lg p-3 sm:p-4">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+    <main className="bg-black text-white min-h-screen py-8 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+            <span className="text-cyan-400">REWARDS </span>SHOP
+          </h1>
+          <p className="text-lg mb-8 text-center text-gray-400">
+            Exchange your hard-earned coins for premium fitness gear and
+            accessories
+          </p>
         </div>
 
-        {/* View All Button */}
-        <div className="flex justify-center mt-6">
-          <button className="border border-gray-300 hover:border-cyan-500 hover:text-cyan-500 px-5 py-1 rounded transition-colors text-xs sm:text-sm">
-            VIEW ALL
-          </button>
+        {/* Main Content */}
+        <div className="flex flex-col w-full">
+          {/* Header with coins */}
+          <div className="self-end flex items-center justify-center font-bold text-lg rounded-full bg-gray-900 px-4 py-2 border border-gray-800 mb-6">
+            <span className="mr-2">Your Balance:</span>
+            <span className="text-cyan-400">1205</span>
+            <Image className="w-5 h-5 ml-1" src={coins} alt="Coins" />
+            <span className="flex items-center justify-center bg-cyan-400 rounded-full text-black h-6 w-6 ml-2 text-xs font-bold">
+              +
+            </span>
+          </div>
+
+          {/* Products grid */}
+          <div className="bg-gray-900/50 rounded-lg p-6 shadow-lg border border-gray-800">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            {/* View All Button */}
+            <div className="flex justify-center mt-10">
+              <button className="bg-transparent border border-cyan-400 hover:bg-cyan-400/10 text-cyan-400 px-8 py-2 rounded-md transition-colors text-sm font-bold">
+                VIEW ALL PRODUCTS
+              </button>
+            </div>
+          </div>
+
+          {/* Featured section */}
+          <div className="mt-12 bg-gradient-to-r from-gray-900 to-black p-6 rounded-lg shadow-lg border border-gray-800">
+            <h3 className="text-xl md:text-2xl font-bold mb-6 text-center">
+              <span className="text-cyan-400">FEATURED </span>PRODUCTS
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {products.slice(0, 3).map((product) => (
+                <div
+                  key={product.id}
+                  className="bg-black rounded-lg p-4 border border-gray-800 hover:border-cyan-400 transition-all"
+                >
+                  <div className="relative w-full h-44">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                  <h4 className="mt-4 text-white font-bold">{product.name}</h4>
+                  <p className="text-cyan-400 mt-1 font-bold">
+                    {product.price}
+                  </p>
+                  <button className="mt-3 w-full bg-cyan-400 hover:bg-cyan-500 text-black py-2 px-4 text-sm font-bold rounded-lg transition-colors">
+                    Quick Buy
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-12 mb-8 text-center bg-gradient-to-b from-gray-900 to-black p-8 rounded-lg border border-gray-800">
+            <h3 className="text-xl md:text-2xl font-bold mb-4">
+              Earn more <span className="text-cyan-400">rewards</span> with
+              daily objectives
+            </h3>
+            <p className="text-gray-400 mb-6">
+              Complete health challenges to earn coins and unlock premium
+              products
+            </p>
+            <button className="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-3 px-8 rounded-md mx-2">
+              VIEW CHALLENGES
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

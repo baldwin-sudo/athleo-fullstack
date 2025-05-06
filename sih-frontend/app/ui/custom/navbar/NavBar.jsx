@@ -13,6 +13,7 @@ export default function NavBar() {
     { name: "Objectifs", link: "/objectifs" },
     { name: "Profile", link: "/profile" },
     { name: "Store", link: "/store" },
+    { name: "About Us", link: "/about-us" },
   ];
   const onClickMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -76,12 +77,9 @@ export default function NavBar() {
             })}
 
             <li>
-              <Link
-                href="/signin"
-                className="bg-cyan-300 text-neutral-950 transition-all duration-100 hover:bg-cyan-100 px-3 py-1.5 rounded-lg"
-              >
+              <button className="bg-cyan-300 text-neutral-950 transition-all duration-100 hover:bg-cyan-100 px-3 py-1.5 rounded-lg">
                 Sign out
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
