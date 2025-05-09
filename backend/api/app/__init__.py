@@ -23,7 +23,9 @@ def create_app():
     
     from .routes.utilisateur_routes import utilisateur_bp
     from .routes.objectif_routes import objectif_bp
-
+    from .routes.hydratation_routes import hydratation_bp
+    from .routes.sommeil_routes import sommeil_bp
+    from .routes.sommeil_routes import entrainement_bp
     app.register_blueprint(utilisateur_bp, url_prefix='/utilisateur')
     app.register_blueprint(objectif_bp, url_prefix='/objectif')
     
