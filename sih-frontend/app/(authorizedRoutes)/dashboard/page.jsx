@@ -12,9 +12,13 @@ import sleep from "../../assets/dashboard/sleep.png";
 const Page = ({}) => {
   const router = useRouter();
 
-  // Fonction pour rediriger vers la page de suivi des pas
+  // rediriger vers steps
   const navigateToSteps = () => {
     router.push("/steps");
+  };
+  // rediriger vers hydratation
+  const navigateToHydration = () => {
+    router.push("/hydration");
   };
 
   return (
@@ -26,7 +30,7 @@ const Page = ({}) => {
         DashBoard
       </h1>
       <div className="text-center italic text-lg flex flex-col items-start space-y-5 w-full p-1 rounded-xl">
-        {/* Steps - Avec événement onClick pour la navigation */}
+        {/* Steps */}
         <div
           className="flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg cursor-pointer"
           onClick={navigateToSteps}
@@ -39,8 +43,11 @@ const Page = ({}) => {
           </p>
         </div>
 
-        {/* Water */}
-        <div className="flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg">
+        {/* Water  */}
+        <div
+          className="flex flex-col items-center space-x-1 bg-neutral-600 p-1 rounded-lg cursor-pointer"
+          onClick={navigateToHydration}
+        >
           <div className="p-4 rounded-full bg-gradient-to-r from-red-200 from-10% via-red-300 via-30% to-red-400 to-100% transition-all duration-200 hover:scale-110 hover:shadow-2xl hover:shadow-red-300">
             <Image className="size-10 lg:size-16" src={water} alt="water" />
           </div>
