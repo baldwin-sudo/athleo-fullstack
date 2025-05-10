@@ -25,9 +25,13 @@ def create_app():
     from .routes.objectif_routes import objectif_bp
     from .routes.hydratation_routes import hydratation_bp
     from .routes.sommeil_routes import sommeil_bp
-    from .routes.sommeil_routes import entrainement_bp
+    from .routes.entrainement_routes import entrainement_bp
+    from .routes.pas_routes import pas_bp
+
     app.register_blueprint(utilisateur_bp, url_prefix='/utilisateur')
     app.register_blueprint(objectif_bp, url_prefix='/objectif')
-    
-    
+    app.register_blueprint(hydratation_bp, url_prefix='/hydratation')
+    app.register_blueprint(sommeil_bp, url_prefix='/sommeil')
+    app.register_blueprint(entrainement_bp, url_prefix='/entrainement')
+    app.register_blueprint(pas_bp, url_prefix='/pas')
     return app
