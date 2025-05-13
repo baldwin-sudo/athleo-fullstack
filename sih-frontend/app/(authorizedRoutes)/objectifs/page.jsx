@@ -1,175 +1,521 @@
-import Link from 'next/link';
+"use client";
 
-export default function Objectifs() {
-  return (
-    <main className="bg-[#525252] text-white min-h-screen">
-      {/* Main Content */}
-      <section className="py-8 px-4">
-        <div className="max-w-6xl mx-auto">
+import React, { useState } from "react";
+import { 
+  FootprintsIcon, 
+  Droplet, 
+  UtensilsCrossed, 
+  Moon, 
+  Dumbbell, 
+  Award, 
+  Crown, 
+  Target,
+  Plus,
+  CheckCircle2,
+  Clock,
+  TrendingUp,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  Lock,
+  Unlock
+} from 'lucide-react';
 
-          <div className="my-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-              <span className="text-cyan-400">7 GAMIFIED </span>HEALTH OBJECTIVES
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "NUTRITION TRACKER",
-                  subtitle: "Balance Your Diet",
-                  description: "Track your eating habits, earn badges for balanced meals, and complete weekly nutrition challenges.",
-                  points: "Up to 150 points/day",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "STEP COUNTER",
-                  subtitle: "Walk Your Way to Rewards",
-                  description: "Track daily steps, compete in step challenges, and unlock achievements at milestone levels.",
-                  points: "1 point per 100 steps",
-                  link: "/tracking-pas", // Ajout du lien
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "TRAINING CYCLES",
-                  subtitle: "Level Up Your Fitness",
-                  description: "Follow structured workout programs, earn XP for each completed session, and level up your fitness profile.",
-                  points: "100-300 points per workout",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "WEIGHT JOURNEY",
-                  subtitle: "Milestone Achievements",
-                  description: "Log your weight daily, visualize progress with interactive charts, and celebrate reaching target milestones.",
-                  points: "50 points for daily logging",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "HYDRATION QUEST",
-                  subtitle: "Water Intake Challenges",
-                  description: "Track water consumption, complete hydration streaks, and earn special badges for consistent daily intake.",
-                  points: "20 points per glass",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "POSTURE MASTER",
-                  subtitle: "Perfect Your Form",
-                  description: "Get personalized stretching routines with real-time form feedback through Openpose technology.",
-                  points: "75 points per stretching session",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )
-                },
-                {
-                  title: "SLEEP GUARDIAN",
-                  subtitle: "Rest Recovery Points",
-                  description: "Monitor sleep patterns, improve sleep quality, and collect dream points for achieving optimal sleep duration.",
-                  points: "Up to 200 points per night",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                  )
-                },
-              ].map((item, index) => {
-                // Wrapping the card with Link if there's a link
-                const CardContent = (
-                  <div key={index} className="bg-gray-900 rounded-lg p-6 shadow-lg border border-gray-800 hover:border-cyan-400 transition-all cursor-pointer">
-                    <div className="flex justify-between items-center mb-4">
-                      <div>{item.icon}</div>
-                      <div className="bg-cyan-400/20 text-cyan-400 text-xs font-bold px-2 py-1 rounded-full">
-                        {item.points}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-cyan-400 mb-3">{item.subtitle}</p>
-                    <p className="text-gray-400 text-sm">{item.description}</p>
-                    <div className="mt-4 pt-4 border-t border-gray-800">
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs text-gray-500">COMPLETION</span>
-                        <span className="text-xs text-gray-500">LEVEL {index + 1}</span>
-                      </div>
-                      <div className="w-full bg-gray-800 rounded-full h-2 mt-1">
-                        <div 
-                          className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full" 
-                          style={{width: `${Math.floor(Math.random() * 100)}%`}}
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                );
+const ObjectivesPage = () => {
+  const [userLevel, setUserLevel] = useState("Débutant"); // Options: "Débutant", "Intermédiaire", "Avancé"
+  const [activeTab, setActiveTab] = useState("daily");
+  const [expandedObjective, setExpandedObjective] = useState(null);
+  
+  // Function to toggle objective expansion
+  const toggleObjective = (id) => {
+    if (expandedObjective === id) {
+      setExpandedObjective(null);
+    } else {
+      setExpandedObjective(id);
+    }
+  };
+  
+  // Daily objectives based on level
+  const dailyObjectives = {
+    "Débutant": [
+      {
+        id: "steps-beginner",
+        title: "10,000 Steps",
+        description: "Walk 10,000 steps in a day to improve cardiovascular health.",
+        icon: <FootprintsIcon className="text-green-400" />,
+        points: 25,
+        progress: 65,
+        completed: false,
+        category: "Activity",
+        details: "Walking 10,000 steps daily (about 8 km) can help improve heart health, boost energy levels, and aid in weight management."
+      },
+      {
+        id: "water-beginner",
+        title: "Drink 1.5L of Water",
+        description: "Stay hydrated by drinking at least 1.5 liters of water daily.",
+        icon: <Droplet className="text-blue-400" />,
+        points: 15,
+        progress: 83,
+        completed: false,
+        category: "Hydration",
+        details: "Proper hydration is essential for maintaining energy levels, supporting digestion, and helping your body function optimally."
+      },
+      {
+        id: "sleep-beginner",
+        title: "8 Hours of Sleep",
+        description: "Get 8 hours of quality sleep for optimal recovery.",
+        icon: <Moon className="text-purple-400" />,
+        points: 30,
+        progress: 100,
+        completed: true,
+        category: "Recovery",
+        details: "Quality sleep is crucial for physical recovery, mental clarity, and overall well-being. Create a consistent sleep schedule for best results."
+      },
+      {
+        id: "nutrition-beginner",
+        title: "2000 Calories Balanced",
+        description: "Maintain a balanced diet with approximately 2000 calories.",
+        icon: <UtensilsCrossed className="text-yellow-400" />,
+        points: 15,
+        progress: 70,
+        completed: false,
+        category: "Nutrition",
+        details: "A balanced diet provides essential nutrients and energy. Focus on whole foods and a good mix of proteins, carbs, and healthy fats."
+      },
+      {
+        id: "workout-beginner",
+        title: "20-Minute Workout",
+        description: "Complete a 20-minute workout session of any type.",
+        icon: <Dumbbell className="text-red-400" />,
+        points: 20,
+        progress: 0,
+        completed: false,
+        category: "Fitness",
+        details: "Even short workouts are beneficial. Focus on consistency rather than intensity when starting your fitness journey."
+      }
+    ],
+    "Intermédiaire": [
+      {
+        id: "steps-intermediate",
+        title: "20,000 Steps",
+        description: "Walk 20,000 steps in a day to improve cardiovascular health.",
+        icon: <FootprintsIcon className="text-green-400" />,
+        points: 25,
+        progress: 45,
+        completed: false,
+        category: "Activity",
+        details: "Doubling the standard step goal helps build endurance and can significantly improve your cardiovascular health."
+      },
+      {
+        id: "water-intermediate",
+        title: "Drink 3L of Water",
+        description: "Stay hydrated by drinking at least 3 liters of water daily.",
+        icon: <Droplet className="text-blue-400" />,
+        points: 15,
+        progress: 60,
+        completed: false,
+        category: "Hydration",
+        details: "Increased water intake supports more intense physical activity and helps maintain optimal bodily functions."
+      },
+      {
+        id: "sleep-intermediate",
+        title: "8 Hours of Sleep",
+        description: "Get 8 hours of quality sleep for optimal recovery.",
+        icon: <Moon className="text-purple-400" />,
+        points: 30,
+        progress: 88,
+        completed: false,
+        category: "Recovery",
+        details: "Quality sleep becomes even more important as you increase your activity levels to ensure proper recovery."
+      },
+      {
+        id: "nutrition-intermediate",
+        title: "2200 Calories Balanced",
+        description: "Maintain a balanced diet with approximately 2200 calories.",
+        icon: <UtensilsCrossed className="text-yellow-400" />,
+        points: 15,
+        progress: 50,
+        completed: false,
+        category: "Nutrition",
+        details: "A slightly higher calorie intake supports your increased activity level while maintaining a balance of nutrients."
+      },
+      {
+        id: "workout-intermediate",
+        title: "40-Minute Workout",
+        description: "Complete a 40-minute workout session of moderate intensity.",
+        icon: <Dumbbell className="text-red-400" />,
+        points: 20,
+        progress: 75,
+        completed: false,
+        category: "Fitness",
+        details: "Longer workouts with moderate intensity help build strength and endurance consistently."
+      }
+    ],
+    "Avancé": [
+      {
+        id: "steps-advanced",
+        title: "40,000 Steps",
+        description: "Walk 40,000 steps in a day for exceptional cardiovascular benefits.",
+        icon: <FootprintsIcon className="text-green-400" />,
+        points: 25,
+        progress: 30,
+        completed: false,
+        category: "Activity",
+        details: "This challenging step count is ideal for those who want to push their limits and maximize their daily activity level."
+      },
+      {
+        id: "water-advanced",
+        title: "Drink 3.5L of Water",
+        description: "Stay optimally hydrated by drinking at least 3.5 liters of water daily.",
+        icon: <Droplet className="text-blue-400" />,
+        points: 15,
+        progress: 40,
+        completed: false,
+        category: "Hydration",
+        details: "Optimal hydration is crucial for high-performance activities and intense workouts."
+      },
+      {
+        id: "sleep-advanced",
+        title: "8 Hours of Quality Sleep",
+        description: "Get 8 hours of deep, restorative sleep for peak recovery.",
+        icon: <Moon className="text-purple-400" />,
+        points: 30,
+        progress: 62,
+        completed: false,
+        category: "Recovery",
+        details: "Recovery is a critical component of advanced fitness. Focus on sleep quality metrics like REM and deep sleep cycles."
+      },
+      {
+        id: "nutrition-advanced",
+        title: "2500 Calories Optimized",
+        description: "Maintain an optimized diet with approximately 2500 calories.",
+        icon: <UtensilsCrossed className="text-yellow-400" />,
+        points: 15,
+        progress: 45,
+        completed: false,
+        category: "Nutrition",
+        details: "An advanced nutritional approach focuses on timing, macronutrient ratios, and quality of food sources for peak performance."
+      },
+      {
+        id: "workout-advanced",
+        title: "90-Minute Intense Workout",
+        description: "Complete a 90-minute high-intensity workout session.",
+        icon: <Dumbbell className="text-red-400" />,
+        points: 20,
+        progress: 20,
+        completed: false,
+        category: "Fitness",
+        details: "High-intensity training for longer durations challenges your body and helps break through plateaus."
+      }
+    ]
+  };
+  
+  // Weekly objectives (common across levels, but with adjusted targets)
+  const weeklyObjectives = [
+    {
+      id: "weekly-steps",
+      title: "Weekly Step Goal",
+      description: userLevel === "Débutant" ? "Reach 70,000 steps this week" : userLevel === "Intermédiaire" ? "Reach 140,000 steps this week" : "Reach 280,000 steps this week",
+      icon: <FootprintsIcon className="text-green-400" />,
+      points: 75,
+      progress: 40,
+      completed: false,
+      category: "Activity",
+      details: "Consistency in your daily step count adds up to significant health benefits over the week."
+    },
+    {
+      id: "weekly-workouts",
+      title: "Complete Workouts",
+      description: userLevel === "Débutant" ? "Complete 3 workouts this week" : userLevel === "Intermédiaire" ? "Complete 4 workouts this week" : "Complete 5 workouts this week",
+      icon: <Dumbbell className="text-red-400" />,
+      points: 100,
+      progress: 66,
+      completed: false,
+      category: "Fitness",
+      details: "Regular workout sessions throughout the week help build a consistent fitness routine."
+    },
+    {
+      id: "weekly-sleep",
+      title: "Sleep Score",
+      description: "Maintain an average sleep score of 80% this week",
+      icon: <Moon className="text-purple-400" />,
+      points: 80,
+      progress: 75,
+      completed: false,
+      category: "Recovery",
+      details: "Your weekly sleep score reflects both the quantity and quality of your sleep patterns."
+    }
+  ];
+  
+  // Monthly challenges
+  const monthlyChallenges = [
+    {
+      id: "monthly-steps",
+      title: "Million Step Challenge",
+      description: "Walk one million steps in a month",
+      icon: <FootprintsIcon className="text-green-400" />,
+      points: 500,
+      progress: 35,
+      completed: false,
+      category: "Activity",
+      locked: userLevel === "Débutant",
+      details: "This ambitious challenge will transform your activity level and cardiovascular health over the month."
+    },
+    {
+      id: "monthly-strength",
+      title: "Strength Transformation",
+      description: "Complete 20 strength training sessions in a month",
+      icon: <Dumbbell className="text-red-400" />,
+      points: 450,
+      progress: 25,
+      completed: false,
+      category: "Fitness",
+      locked: false,
+      details: "Focusing on strength training consistently for a month can dramatically improve your muscle tone and functional fitness."
+    },
+    {
+      id: "monthly-nutrition",
+      title: "Clean Eating Challenge",
+      description: "Maintain a balanced diet for 25 days this month",
+      icon: <UtensilsCrossed className="text-yellow-400" />,
+      points: 400,
+      progress: 48,
+      completed: false,
+      category: "Nutrition",
+      locked: false,
+      details: "This challenge helps you establish long-term healthy eating habits that will benefit your overall health."
+    },
+    {
+      id: "monthly-hydration",
+      title: "Hydration Master",
+      description: "Meet your daily water intake goal for 30 consecutive days",
+      icon: <Droplet className="text-blue-400" />,
+      points: 350,
+      progress: 60,
+      completed: false,
+      category: "Hydration",
+      locked: userLevel === "Débutant",
+      details: "Perfect hydration for an entire month will reset your body's hydration patterns and improve overall health."
+    }
+  ];
 
-                // Return Link-wrapped content if item has link, otherwise return content directly
-                return item.link ? (
-                  <Link href={item.link} key={index}>
-                    {CardContent}
-                  </Link>
-                ) : CardContent;
-              })}
+  // Render an objective card
+  const renderObjectiveCard = (objective, index) => {
+    const isExpanded = expandedObjective === objective.id;
+    
+    return (
+      <div 
+        key={objective.id}
+        className={`bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.01] transition-transform duration-200 ${
+          objective.completed ? 'border border-[#16DDE3]/30' : ''
+        } ${objective.locked ? 'opacity-70' : ''}`}
+      >
+        <div className="flex items-start justify-between mb-2">
+          <div className="flex items-center">
+            <div className="p-3 rounded-xl bg-black/40 mr-4">
+              {objective.icon}
+            </div>
+            <div>
+              <h3 className="font-bold text-lg flex items-center">
+                {objective.title}
+                {objective.locked && <Lock size={16} className="ml-2 text-gray-400" />}
+                {objective.completed && <CheckCircle2 size={16} className="ml-2 text-[#16DDE3]" />}
+              </h3>
+              <p className="text-gray-400 text-sm">{objective.description}</p>
             </div>
           </div>
-          
-          {/* Rewards Section */}
-          <div className="my-16 p-6 bg-gradient-to-r from-gray-900 to-black rounded-lg shadow-lg border border-gray-800">
-            <h3 className="text-xl md:text-2xl font-bold mb-6 text-center">
-              <span className="text-cyan-400">REWARDS </span>& ACHIEVEMENTS
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Fitness Rookie", "Hydration Hero", "Sleep Master", "Step Champion"].map((badge, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-4 border-cyan-400/30">
-                    <span className="text-2xl text-cyan-400/70">
-                      {index + 1}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm font-medium">{badge}</p>
-                </div>
-              ))}
+          <div className="flex flex-col items-end">
+            <div className="flex items-center bg-[#16DDE3]/10 px-3 py-1 rounded-full">
+              <Award size={14} className="text-[#16DDE3] mr-1" />
+              <span className="text-[#16DDE3] text-sm font-medium">+{objective.points}</span>
             </div>
-            <div className="mt-8 text-center">
-              <p className="text-gray-400">Complete daily objectives to unlock badges and earn points!</p>
-              <button className="mt-4 bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-bold py-2 px-6 rounded-md">
-                VIEW ALL REWARDS
-              </button>
-            </div>
-          </div>
-          
-          {/* Call to Action */}
-          <div className="mt-16 mb-8 text-center bg-gradient-to-b from-gray-900 to-black p-8 rounded-lg">
-            <h3 className="text-xl md:text-2xl font-bold mb-4">
-              Ready to <span className="text-cyan-400">gamify your health journey?</span>
-            </h3>
-            <p className="text-gray-400 mb-6">Join thousands of users who have transformed their health habits through our gamified approach</p>
-            <button className="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-3 px-8 rounded-md mx-2">
-              START YOUR JOURNEY
-            </button>
-            <button className="bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-bold py-3 px-8 rounded-md mx-2">
-              SEE LEADERBOARD
-            </button>
+            <span className="text-xs text-gray-500 mt-1">{objective.category}</span>
           </div>
         </div>
+        
+        {/* Progress bar */}
+        <div className="mt-4 mb-2">
+          <div className="flex justify-between text-xs mb-1">
+            <span className="text-gray-400">Progress</span>
+            <span className="text-[#16DDE3] font-medium">{objective.progress}%</span>
+          </div>
+          <div className="h-2 bg-black/40 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-[#16DDE3] to-[#0B737A] rounded-full"
+              style={{ width: `${objective.progress}%` }}
+            ></div>
+          </div>
+        </div>
+        
+        {/* Toggle details button */}
+        <div className="mt-4">
+          <button 
+            className="w-full flex items-center justify-center bg-black/30 hover:bg-black/40 py-1.5 rounded-lg text-xs text-gray-300 transition-colors"
+            onClick={() => toggleObjective(objective.id)}
+          >
+            {isExpanded ? (
+              <>
+                <ChevronUp size={14} className="mr-1" />
+                Hide Details
+              </>
+            ) : (
+              <>
+                <ChevronDown size={14} className="mr-1" />
+                Show Details
+              </>
+            )}
+          </button>
+        </div>
+        
+        {/* Expanded details */}
+        {isExpanded && (
+          <div className="mt-4 pt-4 border-t border-white/10 text-sm text-gray-300">
+            <p>{objective.details}</p>
+          </div>
+        )}
+      </div>
+    );
+  };
+  
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="inline-block hover:scale-105 transition-transform duration-200">
+            <h1 className="text-6xl sm:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#16DDE3] to-[#0B737A]">
+              Objectives
+            </h1>
+          </div>
+          <p className="mt-6 text-xl text-gray-300 max-w-2xl mx-auto">
+            Set goals, track progress, and earn rewards for maintaining a healthy lifestyle
+          </p>
+          
+          {/* Level Selector */}
+          <div className="mt-8 inline-flex bg-black/30 rounded-full p-1">
+            {["Débutant", "Intermédiaire", "Avancé"].map((level) => (
+              <button
+                key={level}
+                onClick={() => setUserLevel(level)}
+                className={`px-6 py-2 rounded-full text-sm transition-colors ${
+                  userLevel === level
+                    ? 'bg-[#16DDE3] text-black font-medium'
+                    : 'text-gray-300 hover:bg-black/40'
+                }`}
+              >
+                {level}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* User Stats Summary */}
+        <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 mb-10 hover:scale-[1.01] transition-transform duration-200">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center">
+              <div className="p-3 bg-[#16DDE3]/10 rounded-full mr-4">
+                <Target size={24} className="text-[#16DDE3]" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl">Your Objectives</h2>
+                <p className="text-gray-400">Current level: <span className="text-[#16DDE3]">{userLevel}</span></p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#16DDE3]">3/5</div>
+                <p className="text-sm text-gray-400">Daily Goals</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#16DDE3]">1/3</div>
+                <p className="text-sm text-gray-400">Weekly Goals</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#16DDE3]">2/4</div>
+                <p className="text-sm text-gray-400">Monthly Challenges</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex border-b border-white/10 mb-8">
+          <button
+            className={`py-3 px-6 text-sm font-medium relative ${
+              activeTab === "daily" ? 'text-[#16DDE3]' : 'text-gray-400 hover:text-gray-200'
+            }`}
+            onClick={() => setActiveTab("daily")}
+          >
+            <div className="flex items-center">
+              <Clock size={16} className="mr-2" />
+              Daily Objectives
+            </div>
+            {activeTab === "daily" && (
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#16DDE3]"></div>
+            )}
+          </button>
+          <button
+            className={`py-3 px-6 text-sm font-medium relative ${
+              activeTab === "weekly" ? 'text-[#16DDE3]' : 'text-gray-400 hover:text-gray-200'
+            }`}
+            onClick={() => setActiveTab("weekly")}
+          >
+            <div className="flex items-center">
+              <TrendingUp size={16} className="mr-2" />
+              Weekly Goals
+            </div>
+            {activeTab === "weekly" && (
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#16DDE3]"></div>
+            )}
+          </button>
+          <button
+            className={`py-3 px-6 text-sm font-medium relative ${
+              activeTab === "monthly" ? 'text-[#16DDE3]' : 'text-gray-400 hover:text-gray-200'
+            }`}
+            onClick={() => setActiveTab("monthly")}
+          >
+            <div className="flex items-center">
+              <Calendar size={16} className="mr-2" />
+              Monthly Challenges
+            </div>
+            {activeTab === "monthly" && (
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#16DDE3]"></div>
+            )}
+          </button>
+        </div>
+
+        {/* Objectives Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {activeTab === "daily" && dailyObjectives[userLevel].map((objective, index) => 
+            renderObjectiveCard(objective, index)
+          )}
+          
+          {activeTab === "weekly" && weeklyObjectives.map((objective, index) => 
+            renderObjectiveCard(objective, index)
+          )}
+          
+          {activeTab === "monthly" && monthlyChallenges.map((objective, index) => 
+            renderObjectiveCard(objective, index)
+          )}
+        </div>
+        
+        {/* Create Custom Objective Section */}
+        <div className="mt-16 bg-gradient-to-r from-[#16DDE3]/20 to-transparent backdrop-blur-sm rounded-3xl p-10 text-center">
+          <h3 className="text-3xl font-bold mb-4">
+            Create Your <span className="text-[#16DDE3]">Custom</span> Objectives
+          </h3>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Set personalized health and fitness goals tailored to your specific needs
+          </p>
+          <button className="px-8 py-4 bg-[#16DDE3] text-black font-semibold rounded-full hover:bg-[#0B737A] hover:text-white transition-colors duration-200 hover:scale-105 active:scale-95 transition-transform flex items-center mx-auto">
+            <Plus size={20} className="mr-2" />
+            Create Custom Objective
+          </button>
+        </div>
       </section>
-    </main>
+    </div>
   );
-}
+};
+
+export default ObjectivesPage;
