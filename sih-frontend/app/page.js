@@ -228,7 +228,7 @@ const HomePage = () => {
           <div className="mb-6 md:mb-0">
             <div className="text-2xl font-bold text-[#16DDE3]">ATHLEO</div>
             <p className="text-gray-400">
-              Gamification du suivi d'activité physique
+              Gamification du suivi d &apos activité physique
             </p>
           </div>
           <div className="flex gap-8">
