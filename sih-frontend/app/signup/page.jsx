@@ -3,12 +3,17 @@ import Image from "next/image";
 import React, { useState } from "react";
 import brand from "../assets/brand-logo.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const fields = [
+  { name: "nom", label: "nom", type: "text" },
+  { name: "prenom", label: "prenom", type: "text" },
+
   { name: "username", label: "nom d'utilisateur", type: "text" },
   { name: "password", label: "mot de passe", type: "password" },
+  { name: "taille", label: "mot de passe", type: "password" },
   { name: "age", label: "Âge", type: "number" },
   { name: "sexe", label: "Sexe", type: "text" },
-  { name: "imc", label: "IMC", type: "number" },
+  // { name: "imc", label: "IMC", type: "number" },
   { name: "pasParJour", label: "Pas/jour", type: "number" },
   {
     name: "sportParSemaine",
@@ -22,25 +27,30 @@ const fields = [
 
 const Page = () => {
   const [formData, setFormData] = useState({
-    age: "",
-    sexe: "",
-    imc: "",
-    pasParJour: "",
-    sportParSemaine: "",
-    sommeil: "",
-    tempsDispoParJour: "",
-    objectif: "",
+    nom: "nouhaila",
+    prenom: null,
+    username: null,
+    password: null,
+    taille: 65,
+    age: 23,
+    sexe: null,
+    pasParJour: null,
+    sportParSemaine: null,
+    sommeil: null,
+    tempsDispoParJour: null,
+    objectif: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/signup", {
+      const res = await fetch("http://localhost:1991/utilisateur/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -49,8 +59,13 @@ const Page = () => {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message);
       alert("Inscription réussie !");
+      const navigateToDashboard = () => {
+        router.push("/dashboard");
+      };
+      navigateToDashboard();
     } catch (error) {
       alert("Erreur : " + error.message);
+    } finally {
     }
   };
 
@@ -75,7 +90,6 @@ const Page = () => {
                 value={formData[field.name]}
                 onChange={handleChange}
                 className="border border-neutral-300 rounded px-3 py-2 bg-neutral-50 outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-300 transition duration-200"
-                required
               />
             </div>
           ))}

@@ -6,17 +6,20 @@ utilisateur_bp = Blueprint('utilisateur', __name__)
 
 @utilisateur_bp.route('/signup', methods=['POST'])
 def signup():
+    db.session.expire_all()  # Clear stale session data
+
     data = request.json
     if Utilisateur.query.filter_by(username=data['username']).first():
         return jsonify({'message': 'Nom d’utilisateur déjà utilisé'}), 409
 
     new_user = Utilisateur(
-        nom=data['nom'],
-        prenom=data['prenom'],
-        username=data['username'],
-        password=data['password'],  
-        age=data['age'],
-        taille=data['taille']
+        nom=data.get('nom', ''),
+        prenom=data.get('prenom', ''),
+        username=data.get('username', ''),
+        password=data.get('password', ''),
+        age=int(data.get('age', 23)),
+        # taille=int(data.get('taille', 65))
+        taille= 65
     )
     db.session.add(new_user)
     db.session.commit()

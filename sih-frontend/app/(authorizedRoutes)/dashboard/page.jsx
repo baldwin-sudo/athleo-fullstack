@@ -3,7 +3,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FootprintsIcon, Droplet, UtensilsCrossed, Moon, Dumbbell, TrendingUp, Award, Crown } from 'lucide-react';
+import {
+  FootprintsIcon,
+  Droplet,
+  UtensilsCrossed,
+  Moon,
+  Dumbbell,
+  TrendingUp,
+  Award,
+  Crown,
+} from "lucide-react";
 
 const DashboardPage = () => {
   const router = useRouter();
@@ -14,12 +23,16 @@ const DashboardPage = () => {
     hydration: 75,
     nutrition: 40,
     sleep: 90,
-    workout: 25
+    workout: 25,
   });
 
-  // vers pas
+  // Navigation functions
   const navigateToSteps = () => {
     router.push("/steps");
+  };
+
+  const navigateToWorkout = () => {
+    router.push("/workout");
   };
 
   const navigateToHydration = () => {
@@ -29,7 +42,7 @@ const DashboardPage = () => {
   const navigateToNutrition = () => {
     router.push("/nutrition");
   };
-  
+
   const navigateToSleep = () => {
     router.push("/sleep");
   };
@@ -47,7 +60,7 @@ const DashboardPage = () => {
           <p className="mt-6 text-xl text-gray-300 max-w-2xl mx-auto">
             Track your progress and achieve your health goals
           </p>
-          
+
           {/* Level & Points Indicator */}
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <div className="bg-black/30 px-4 py-2 rounded-full flex items-center">
@@ -75,23 +88,28 @@ const DashboardPage = () => {
             </span>
             Today's Progress
           </h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {/* Steps Progress */}
             <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center hover:bg-black/40 transition-all">
               <div className="relative w-20 h-20 mb-3">
                 <div className="absolute inset-0 rounded-full border-4 border-gray-800"></div>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="40" 
-                    fill="none" 
-                    stroke="#0B737A" 
-                    strokeWidth="8" 
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#0B737A"
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray="251.2"
-                    strokeDashoffset={251.2 - (251.2 * dailyProgress.steps) / 100}
+                    strokeDashoffset={
+                      251.2 - (251.2 * dailyProgress.steps) / 100
+                    }
                     transform="rotate(-90 50 50)"
                   />
                 </svg>
@@ -101,29 +119,34 @@ const DashboardPage = () => {
               </div>
               <h3 className="font-bold text-lg">Steps</h3>
               <p className="text-[#16DDE3]">{dailyProgress.steps}%</p>
-              <button 
+              <button
                 onClick={navigateToSteps}
                 className="mt-2 text-xs bg-[#16DDE3]/20 hover:bg-[#16DDE3]/30 px-3 py-1 rounded-full text-[#16DDE3] transition-colors"
               >
                 View Details
               </button>
             </div>
-            
+
             {/* Hydration Progress */}
             <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center hover:bg-black/40 transition-all">
               <div className="relative w-20 h-20 mb-3">
                 <div className="absolute inset-0 rounded-full border-4 border-gray-800"></div>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="40" 
-                    fill="none" 
-                    stroke="#0B737A" 
-                    strokeWidth="8" 
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#0B737A"
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray="251.2"
-                    strokeDashoffset={251.2 - (251.2 * dailyProgress.hydration) / 100}
+                    strokeDashoffset={
+                      251.2 - (251.2 * dailyProgress.hydration) / 100
+                    }
                     transform="rotate(-90 50 50)"
                   />
                 </svg>
@@ -133,29 +156,34 @@ const DashboardPage = () => {
               </div>
               <h3 className="font-bold text-lg">Hydration</h3>
               <p className="text-[#16DDE3]">{dailyProgress.hydration}%</p>
-              <button 
+              <button
                 onClick={navigateToHydration}
                 className="mt-2 text-xs bg-[#16DDE3]/20 hover:bg-[#16DDE3]/30 px-3 py-1 rounded-full text-[#16DDE3] transition-colors"
               >
                 View Details
               </button>
             </div>
-            
+
             {/* Nutrition Progress */}
             <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center hover:bg-black/40 transition-all">
               <div className="relative w-20 h-20 mb-3">
                 <div className="absolute inset-0 rounded-full border-4 border-gray-800"></div>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="40" 
-                    fill="none" 
-                    stroke="#0B737A" 
-                    strokeWidth="8" 
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#0B737A"
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray="251.2"
-                    strokeDashoffset={251.2 - (251.2 * dailyProgress.nutrition) / 100}
+                    strokeDashoffset={
+                      251.2 - (251.2 * dailyProgress.nutrition) / 100
+                    }
                     transform="rotate(-90 50 50)"
                   />
                 </svg>
@@ -165,29 +193,34 @@ const DashboardPage = () => {
               </div>
               <h3 className="font-bold text-lg">Nutrition</h3>
               <p className="text-[#16DDE3]">{dailyProgress.nutrition}%</p>
-              <button 
+              <button
                 onClick={navigateToNutrition}
                 className="mt-2 text-xs bg-[#16DDE3]/20 hover:bg-[#16DDE3]/30 px-3 py-1 rounded-full text-[#16DDE3] transition-colors"
               >
                 View Details
               </button>
             </div>
-            
+
             {/* Sleep Progress */}
             <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center hover:bg-black/40 transition-all">
               <div className="relative w-20 h-20 mb-3">
                 <div className="absolute inset-0 rounded-full border-4 border-gray-800"></div>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="40" 
-                    fill="none" 
-                    stroke="#0B737A" 
-                    strokeWidth="8" 
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#0B737A"
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray="251.2"
-                    strokeDashoffset={251.2 - (251.2 * dailyProgress.sleep) / 100}
+                    strokeDashoffset={
+                      251.2 - (251.2 * dailyProgress.sleep) / 100
+                    }
                     transform="rotate(-90 50 50)"
                   />
                 </svg>
@@ -197,29 +230,34 @@ const DashboardPage = () => {
               </div>
               <h3 className="font-bold text-lg">Sleep</h3>
               <p className="text-[#16DDE3]">{dailyProgress.sleep}%</p>
-              <button 
+              <button
                 onClick={navigateToSleep}
                 className="mt-2 text-xs bg-[#16DDE3]/20 hover:bg-[#16DDE3]/30 px-3 py-1 rounded-full text-[#16DDE3] transition-colors"
               >
                 View Details
               </button>
             </div>
-            
+
             {/* Workout Progress */}
             <div className="bg-black/30 rounded-xl p-4 flex flex-col items-center hover:bg-black/40 transition-all">
               <div className="relative w-20 h-20 mb-3">
                 <div className="absolute inset-0 rounded-full border-4 border-gray-800"></div>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
-                  <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="40" 
-                    fill="none" 
-                    stroke="#0B737A" 
-                    strokeWidth="8" 
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#0B737A"
+                    strokeWidth="8"
                     strokeLinecap="round"
                     strokeDasharray="251.2"
-                    strokeDashoffset={251.2 - (251.2 * dailyProgress.workout) / 100}
+                    strokeDashoffset={
+                      251.2 - (251.2 * dailyProgress.workout) / 100
+                    }
                     transform="rotate(-90 50 50)"
                   />
                 </svg>
@@ -229,7 +267,8 @@ const DashboardPage = () => {
               </div>
               <h3 className="font-bold text-lg">Workout</h3>
               <p className="text-[#16DDE3]">{dailyProgress.workout}%</p>
-              <button 
+              <button
+                onClick={navigateToWorkout}
                 className="mt-2 text-xs bg-[#16DDE3]/20 hover:bg-[#16DDE3]/30 px-3 py-1 rounded-full text-[#16DDE3] transition-colors"
               >
                 View Details
@@ -237,11 +276,11 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Steps Card */}
-          <div 
+          <div
             onClick={navigateToSteps}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group"
           >
@@ -252,18 +291,21 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold">Steps Tracking</h2>
             </div>
             <p className="text-gray-300 mb-4">
-              Track your daily steps to stay active and energized. Walking is a simple way to improve your health.
+              Track your daily steps to stay active and energized. Walking is a
+              simple way to improve your health.
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-[#16DDE3] font-medium">Goal: 10,000 steps</span>
+              <span className="text-[#16DDE3] font-medium">
+                Goal: 10,000 steps
+              </span>
               <span className="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm">
                 +25 points
               </span>
             </div>
           </div>
-          
+
           {/* Hydration Card */}
-          <div 
+          <div
             onClick={navigateToHydration}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group"
           >
@@ -274,18 +316,21 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold">Hydration</h2>
             </div>
             <p className="text-gray-300 mb-4">
-              Stay hydrated by logging your daily water intake. Proper hydration is key to overall wellness.
+              Stay hydrated by logging your daily water intake. Proper hydration
+              is key to overall wellness.
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-[#16DDE3] font-medium">Goal: 8 glasses</span>
+              <span className="text-[#16DDE3] font-medium">
+                Goal: 8 glasses
+              </span>
               <span className="bg-red-400/20 text-red-400 px-3 py-1 rounded-full text-sm">
                 +15 points
               </span>
             </div>
           </div>
-          
+
           {/* Nutrition Card */}
-          <div 
+          <div
             onClick={navigateToNutrition}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group"
           >
@@ -296,18 +341,21 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold">Nutrition</h2>
             </div>
             <p className="text-gray-300 mb-4">
-              Maintain a healthy diet by tracking your meals. Balanced nutrition provides your body with essential fuel.
+              Maintain a healthy diet by tracking your meals. Balanced nutrition
+              provides your body with essential fuel.
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-[#16DDE3] font-medium">Goal: 2000 calories</span>
+              <span className="text-[#16DDE3] font-medium">
+                Goal: 2000 calories
+              </span>
               <span className="bg-purple-400/20 text-purple-400 px-3 py-1 rounded-full text-sm">
                 +15 points
               </span>
             </div>
           </div>
-          
+
           {/* Sleep Card */}
-          <div 
+          <div
             onClick={navigateToSleep}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group"
           >
@@ -318,7 +366,8 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold">Sleep</h2>
             </div>
             <p className="text-gray-300 mb-4">
-              Get enough rest and track your sleeping habits. Quality sleep is crucial for recovery and performance.
+              Get enough rest and track your sleeping habits. Quality sleep is
+              crucial for recovery and performance.
             </p>
             <div className="flex justify-between items-center">
               <span className="text-[#16DDE3] font-medium">Goal: 8 hours</span>
@@ -327,9 +376,10 @@ const DashboardPage = () => {
               </span>
             </div>
           </div>
-          
+
           {/* Workout Card */}
-          <div 
+          <div
+            onClick={navigateToWorkout}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group"
           >
             <div className="flex items-center mb-4">
@@ -339,16 +389,19 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold">Workout</h2>
             </div>
             <p className="text-gray-300 mb-4">
-              Record your workouts to level up your fitness journey. Regular exercise improves strength and endurance.
+              Record your workouts to level up your fitness journey. Regular
+              exercise improves strength and endurance.
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-[#16DDE3] font-medium">Goal: 30 minutes</span>
+              <span className="text-[#16DDE3] font-medium">
+                Goal: 30 minutes
+              </span>
               <span className="bg-yellow-400/20 text-yellow-400 px-3 py-1 rounded-full text-sm">
                 +25 points
               </span>
             </div>
           </div>
-          
+
           {/* Total Points Card */}
           <div className="bg-gradient-to-br from-[#16DDE3]/10 to-black rounded-3xl p-6 hover:scale-[1.02] transition-transform duration-200">
             <div className="flex items-center mb-6">
@@ -357,13 +410,19 @@ const DashboardPage = () => {
               </div>
               <h2 className="text-2xl font-bold">Points Summary</h2>
             </div>
-            
+
             <div className="bg-black/30 rounded-xl p-4 mb-4">
-              <h3 className="text-xl font-bold text-center mb-2">Today's Points</h3>
-              <div className="text-5xl font-bold text-center text-[#16DDE3] mb-1">42</div>
-              <p className="text-center text-gray-400 text-sm">out of 110 possible</p>
+              <h3 className="text-xl font-bold text-center mb-2">
+                Today's Points
+              </h3>
+              <div className="text-5xl font-bold text-center text-[#16DDE3] mb-1">
+                42
+              </div>
+              <p className="text-center text-gray-400 text-sm">
+                out of 110 possible
+              </p>
             </div>
-            
+
             <div className="flex justify-between text-center">
               <div>
                 <div className="text-lg font-bold text-[#16DDE3]">142</div>

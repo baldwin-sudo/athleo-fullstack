@@ -1,14 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_cors import CORS
 
 # Initialisation des extensions Flask
 db = SQLAlchemy()
 login_manager = LoginManager()
 
 def create_app():
-    app = Flask(__name__)
-    
+    app = Flask(__name__,)
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+
     # Configuration de la base de données MySQL
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/athleo'
     app.config['SECRET_KEY'] = 'f83c1a8f934be9d62f7a10c8d5ee0d12'
