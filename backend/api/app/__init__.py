@@ -18,16 +18,16 @@ def create_app():
     login_manager.init_app(app)
     
     # Enregistrement des routes
-    from .routes import main
+    from app.routes.main import main
     app.register_blueprint(main)
     
-    from .routes.utilisateur_routes import utilisateur_bp
-    from .routes.objectif_routes import objectif_bp
-    from .routes.hydratation_routes import hydratation_bp
-    from .routes.sommeil_routes import sommeil_bp
-    from .routes.entrainement_routes import entrainement_bp
-    from .routes.pas_routes import pas_bp
-    from .routes.classement_routes import classement_bp
+    from app.routes.utilisateur_routes import utilisateur_bp
+    from app.routes.objectif_routes import objectif_bp
+    from app.routes.hydratation_routes import hydratation_bp
+    from app.routes.sommeil_routes import sommeil_bp
+    from app.routes.entrainement_routes import entrainement_bp
+    from app.routes.pas_routes import pas_bp
+    from app.routes.classement_routes import classement_bp
 
     app.register_blueprint(utilisateur_bp, url_prefix='/utilisateur')
     app.register_blueprint(objectif_bp, url_prefix='/objectif')

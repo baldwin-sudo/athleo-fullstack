@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  athleo-ml-api:
+    container_name: athleo-ml-api
+    build:
+      context: ./backend/model_athleo
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/model_athleo:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks:
+      - athleo-network
+
+networks:
+  athleo-network:
+    driver: bridge
